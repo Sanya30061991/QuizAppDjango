@@ -764,11 +764,12 @@ input.checkbox:checked:after {
 		<h1>Fill the form below</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-				<form action="#" method="post">
-					<input class="text" type="text" name="Username" placeholder="Username" required="">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+				<form  method="POST">
+                    {% csrf_token %}
+                    {{ form.username }}
+                    {{ form.email }}
+                    {{ form.password }}
+					<input class="text w3lpass" type="password" name="password1" placeholder="Confirm Password" required="">
 					<div class="wthree-text">
 						<label class="anim">
 							<input type="checkbox" class="checkbox" required="">
@@ -780,10 +781,14 @@ input.checkbox:checked:after {
 				</form>
 				<p>Already have an account? <a href="auth"> Login Now!</a></p>
 			</div>
-		</div>
+        </div>
+        {% if errors %}
 		<div class="colorlibcopy-agile">
-			<p></p>
-		</div>
+            {% for error in errors %}
+            <p>{{error}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
 		<ul class="colorlib-bubbles">
 			<li></li>
 			<li></li>

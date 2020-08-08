@@ -10,19 +10,27 @@ class UserForm(ModelForm):
                     'username',
                     'email',
                     'password',
-                    'first_name'
                  ]
         widgets = {
                     'username': TextInput(attrs={
-
+                                                'class': "text",
+                                                'type': "text",
+                                                'name': "Username",
+                                                'placeholder': "Username",
+                                                'required':""
                                                 }),
                     'email': TextInput(attrs={
-
+                                                'class': "text email",
+                                                'type': "email",
+                                                'name': "email",
+                                                'placeholder': "Email",
+                                                'required':""
                                                 }),
                     'password': TextInput(attrs={
-
-                                                }),
-                    'first_name': TextInput(attrs={
-
-                                                }),
+                                                'class': "text",
+                                                'type': "password",
+                                                'name': "password",
+                                                'placeholder': "Password",
+                                                'required':""
+                                                })
                   }

@@ -110,14 +110,8 @@ body {
 <body>
     <div class="login-page">
         <div class="form">
-          <form class="register-form">
-            <input type="text" placeholder="Name"/>
-            <input type="password" placeholder="Password"/>
-            <input type="text" placeholder="Email address"/>
-            <button>create</button>
-            <p class="message">Already registered? <a href="#">Sign In</a></p>
-          </form>
-          <form class="login-form">
+          <form class="login-form" method="POST">
+            {% csrf_token %}
             <input type="text" placeholder="Username"/>
             <input type="password" placeholder="Password"/>
             <button>login</button>
@@ -125,5 +119,12 @@ body {
           </form>
         </div>
       </div>
+      {% if errors %}
+		  <div class="colorlibcopy-agile">
+            {% for error in errors %}
+            <p>{{error}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
 </body>
 </html>
