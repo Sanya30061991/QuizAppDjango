@@ -15,7 +15,7 @@ class UserForm(ModelForm):
                     'username': TextInput(attrs={
                                                 'class': "text",
                                                 'type': "text",
-                                                'name': "Username",
+                                                'name': "username",
                                                 'placeholder': "Username",
                                                 'required':""
                                                 }),

@@ -7,6 +7,53 @@
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.colorlibcopy-agile {
+  margin: 2em 0 1em;
+  text-align: center;
+}
+
+.colorlibcopy-agile p {
+  font-size: .9em;
+  color: #fff;
+  line-height: 1.8em;
+  letter-spacing: 1px;
+  font-weight: 100;
+}
+
+.colorlibcopy-agile p a {
+  color: #fff;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+.colorlibcopy-agile p a:hover {
+  color: #000;
+}
+
+.colorlibcopy-agile p {
+  padding: 0 2em;
+  }
+}
+.colorlibcopy-agile {
+  margin: 1em 0 1em;
+  }
+}
+
+.colorlibcopy-agile p {
+  padding: 0 1em;
+  }
+}
+.colorlibcopy-agile {
+margin: 0 0 1em;
+}
+
+.colorlibcopy-agile p {
+font-size: .85em;
+}
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -112,8 +159,8 @@ body {
         <div class="form">
           <form class="login-form" method="POST">
             {% csrf_token %}
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
+            <input type="text" placeholder="Username" name="login">
+            <input type="password" placeholder="Password" name="password">
             <button>login</button>
             <p class="message">Not registered? <a href="register">Create an account</a></p>
           </form>
