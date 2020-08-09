@@ -27,6 +27,7 @@ def registration(request):
                 context['errors'].append("Passwords aren't equal!")
     return render(request, "Quiz/registration.html", context)
 
+
 def log_in(request):
     context = {
                 'errors': []
@@ -41,3 +42,7 @@ def log_in(request):
         else:
             context['errors'].append("Invalid login or password!")
     return render(request, "Quiz/login.html", context)
+
+
+def start(request):
+    return render(request, 'Quiz/start.html')
