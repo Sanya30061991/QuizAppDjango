@@ -53,6 +53,50 @@ body {
     color: rgb(49, 80, 2);
     text-shadow: 0px 0px 4px rgb(9, 71, 17);
 }
+
+.content {
+    position: absolute;
+    background: indigo;
+    width: 75%;
+    margin: 10% 12.5%;
+}
+
+.el {
+    position: relative;
+    background-color: rgb(57, 77, 18);
+    border-radius: 2%;
+}
+
+.desc {
+    position: relative;
+    background-color: rgb(95, 165, 25);
+}
+
+.el-title {
+    position: relative;
+    font-family: 'Antic Slab', serif;
+    text-align: center;
+    font-size: 3vw;
+    padding-top: 3%;
+}
+
+.el-cat {
+    position: relative;
+    font-family: 'Antic Slab', serif;
+    font-size: 2vw;
+}
+.el-count {
+    position: relative;
+    font-family: 'Antic Slab', serif;
+    font-size: 1vw;
+}
+
+.author {
+    position: relative;
+    float: right;
+    bottom: 15%;
+    color:mediumseagreen;
+}
 </style>
 </head>
 <body>
@@ -62,13 +106,24 @@ body {
         <a href="" class="navig">Categories</a>
         <a href="" class="navig">Passed Quizes</a>
         <a href="" class="navig">Log Out</a>
+	</div>
+    <div class="content">
+        <div class="el">
+            <h3 class="el-title">Quiz #1</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category</h3>
+                <span class="el-count">Total passes</span>
+                <h4 class="author">Made by Me</h4>
+            </div>
+        </div>
+    </div>
+        
         {% if errors %}
-		<div class="colorlibcopy-agile">
+        <div class="colorlibcopy-agile">
             {% for error in errors %}
             <p>{{error}}</p>
             {% endfor %}
         </div>
         {% endif %}
-	</div>
 </body>
 </html>
