@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Rowdies:wght@300&display=swap" rel="stylesheet">
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+        @font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
 
 .colorlibcopy-agile {
   margin: 2em 0 1em;
@@ -152,17 +157,113 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+.trans {
+  margin-top: 2%;
+  position: absolute;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: white;
+  margin-bottom: 2%;
+  display: flex;
+  border-radius: 2%;
+}
 
 #backgrim {
   display: block;
-  width: 80%;
+  position: relative;
+  width: 98%;
+  padding: 0.5% 0.5% 0.5% 0.5%;
   margin-left: auto;
   margin-right: auto;
+  content: url(https://wp-media.petersons.com/blog/wp-content/uploads/2020/04/10152125/iStock-1126799749.jpg);
+  z-index: 0;
+  -webkit-mask-image:-webkit-gradient(linear, right top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  border-radius: 2%;
+}
+
+
+#trapezoid {
+  position: absolute;
+  width: 40%;
+  height: 100%; 
+  background-color: rgba(255, 255, 255, 0.609);
+  border-radius: 3%;
+    }
+
+#title {
+  position: relative;
+  text-align: center;
+  font-size: 4vw;
+  font-family: 'Rowdies', cursive;
+  padding: 0% 0% 0% 0%;
+  margin: 0% 0% 5% 0%;
+  margin-top: 20%;
+}
+#addict {
+  position: relative;
+  text-align: center;
+  font-size: 3vw;
+  color: rgb(102, 102, 102);
+  font-family: 'Rowdies', cursive;
+  padding: 0% 0% 0% 0%;
+  margin: 0% 0% 5% 0%;
+}
+#addict2 {
+  position: relative;
+  text-align: center;
+  font-size: 4vw;
+  color: rgb(69, 161, 46);
+  font-family: 'Rowdies', cursive;
+  padding: 0% 0% 15% 0%;
+  margin: 0% 0% 0% 0%;
+}
+
+#add3 {
+  position: relative;
+  text-align: center;
+  font-size: 3vw;
+  color: rgb(69, 161, 46);
+  font-family: 'Rowdies', cursive;
+  padding: 0% 0% 0% 0%;
+  margin: 0% 0% 20% 0%;
+}
+
+.leenk {
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 6% 5%;
+  text-decoration: none;
+  font-family: 'Rowdies', cursive;
+  background-color: rgb(96, 165, 79);
+  font-size: 1.9vw;
+  color: black;
+  border-radius: 2%;
+  transition: color 0.5s, background-color 0.5s, font-size 0.5s;
+}
+
+.leenk:hover {
+  background-color: rgb(67, 168, 42);
+  color: white;
+  font-size: 1.5vw;
 }
     </style>
 </head>
 <body>
-          <img src="https://ak.picdn.net/shutterstock/videos/18959003/thumb/1.jpg" alt="" id="backgrim">
+  <div class="trans">
+          <img id="backgrim" src="https://wp-media.petersons.com/blog/wp-content/uploads/2020/04/10152125/iStock-1126799749.jpg">
+            <div id="trapezoid">
+              <h1 id="title">Pass through</h1>
+              <h2 id="addict">various user's custom tests</h2>
+              <h1 id="addict2">ABSOLUTELY FREE</h1>
+              <h3 id="add3">Join Now</h3>
+              <a href="register" class="leenk">Create an account</a>
+              <a href="auth" class="leenk">Sign In</a>
+            </div>
+            
+          </div>
+  </div>
+          
 
       {% if errors %}
 		  <div class="colorlibcopy-agile">
@@ -171,5 +272,6 @@ body {
             {% endfor %}
         </div>
         {% endif %}
+      <footer></footer>
 </body>
 </html>
