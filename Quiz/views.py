@@ -1,8 +1,17 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
+
+
+def main(request):
+    context = {
+                'errors':[]
+              }
+    return render(request, 'Quiz/main.html', context)
+
+
 def registration(request):
     context = {
                 'form': UserForm(),
@@ -38,7 +47,7 @@ def log_in(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            context['errors'].append("Logged successfully!")
+            return redirect('main')
         else:
             context['errors'].append("Invalid login or password!")
     return render(request, "Quiz/login.html", context)
