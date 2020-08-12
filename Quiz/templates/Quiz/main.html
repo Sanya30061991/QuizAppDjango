@@ -9,6 +9,7 @@
 <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+
 body {
     position: relative;
     width: 99%;
@@ -49,14 +50,13 @@ body {
 }
 
 .navig:hover {
-    background-color: #43be00;
+    background-color: #59ff00;
     color: rgb(49, 80, 2);
     text-shadow: 0px 0px 4px rgb(9, 71, 17);
 }
 
 .content {
     position: absolute;
-    background: indigo;
     width: 75%;
     margin: 10% 12.5%;
 }
@@ -65,6 +65,7 @@ body {
     position: relative;
     background-color: rgb(57, 77, 18);
     border-radius: 2%;
+    margin: 2% 0%;
 }
 
 .desc {
@@ -78,6 +79,7 @@ body {
     text-align: center;
     font-size: 3vw;
     padding-top: 3%;
+    text-shadow: 0px 0px 10px aliceblue;
 }
 
 .el-cat {
@@ -92,10 +94,33 @@ body {
 }
 
 .author {
-    position: relative;
+    font-size: 1vw;
+    position: absolute;
     float: right;
-    bottom: 15%;
-    color:mediumseagreen;
+    left: 90%;
+    bottom: 20%;
+    color:rgb(255, 255, 255);
+}
+
+.no-quiz {
+    position: relative;
+    width: 100%;
+    height: 16vw;
+    background-color: rgb(53, 133, 42);
+    text-align: center;
+    padding: 2% 0%;
+}
+
+.no-quiz span {
+    font-size: 4vw;
+    color: beige;
+    font-family: font-family: 'Antic Slab', serif;
+}
+
+.no-quiz text {
+    font-size: 2vw;
+    color: beige;
+    font-family: font-family: 'Antic Slab', serif;
 }
 </style>
 </head>
@@ -108,16 +133,6 @@ body {
         <a href="" class="navig">Log Out</a>
 	</div>
     <div class="content">
-        <div class="el">
-            <h3 class="el-title">Quiz #1</h3>
-            <div class="desc">
-                <h3 class="el-cat">Category</h3>
-                <span class="el-count">Total passes</span>
-                <h4 class="author">Made by Me</h4>
-            </div>
-        </div>
-    </div>
-        
         {% if errors %}
         <div class="colorlibcopy-agile">
             {% for error in errors %}
@@ -125,5 +140,29 @@ body {
             {% endfor %}
         </div>
         {% endif %}
+        {% if quizes %}
+        {% for quiz in quizes %}
+        <div class="el">
+            <h3 class="el-title">{{quiz.title}}</h3>
+            <div class="desc">
+                <h3 class="el-cat">{{quiz.category}}</h3>
+                <span class="el-count">{{quiz.total}}</span>
+                <h4 class="author">{{quiz.author}}</h4>
+        {% endfor %}
+        {% else %}
+        <div class="no-quiz">
+            <span>Oops!</span>
+            <br>
+            <text>Internal error has occuried</text>
+            <br>
+            <text>There is no quizez</text>
+            <br>
+            <span>:(</span>
+            <br>
+        </div>
+        {% endif %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
