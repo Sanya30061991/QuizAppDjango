@@ -65,19 +65,25 @@ body {
     position: relative;
     background-color: rgb(57, 77, 18);
     border-radius: 2%;
-    margin: 2% 0%;
+    margin: 2% 2%;
+    width: 20%;
+    display: inline-block;
+    text-decoration: none;
 }
-
+.el:hover {
+    color: orangered;
+}
 .desc {
     position: relative;
     background-color: rgb(95, 165, 25);
+    text-align: center;
 }
 
 .el-title {
     position: relative;
     font-family: 'Antic Slab', serif;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2vw;
     padding-top: 3%;
     text-shadow: 0px 0px 10px aliceblue;
 }
@@ -85,7 +91,7 @@ body {
 .el-cat {
     position: relative;
     font-family: 'Antic Slab', serif;
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 .el-count {
     position: relative;
@@ -94,11 +100,8 @@ body {
 }
 
 .author {
+    position: relative;
     font-size: 1vw;
-    position: absolute;
-    float: right;
-    left: 90%;
-    bottom: 20%;
     color:rgb(255, 255, 255);
 }
 
@@ -122,6 +125,15 @@ body {
     color: beige;
     font-family: font-family: 'Antic Slab', serif;
 }
+
+
+.attend {
+    font-family: 'Antic Slab', serif;
+    font-size: 2vw;
+    margin: 0%;
+    text-shadow: 0px 0px 12px white;
+}
+
 </style>
 </head>
 <body>
@@ -130,39 +142,145 @@ body {
         <a href="" class="navig">Create Quiz</a>
         <a href="" class="navig">Categories</a>
         <a href="" class="navig">Passed Quizes</a>
-        <a href="" class="navig">Log Out</a>
+        <a href="log-out" class="navig">Log Out</a>
 	</div>
     <div class="content">
         {% if errors %}
-        <div class="colorlibcopy-agile">
-            {% for error in errors %}
-            <p>{{error}}</p>
-            {% endfor %}
-        </div>
+            <div class="colorlibcopy-agile">
+                {% for error in errors %}
+                <p>{{error}}</p>
+                {% endfor %}
+            </div>
         {% endif %}
         {% if quizes %}
+        <h2 class="attend">Newest Users quizes:</h2>
         {% for quiz in quizes %}
-        <div class="el">
-            <h3 class="el-title">{{quiz.title}}</h3>
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
-                <h3 class="el-cat">{{quiz.category}}</h3>
-                <span class="el-count">{{quiz.total}}</span>
-                <h4 class="author">{{quiz.author}}</h4>
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
         {% endfor %}
-        {% else %}
+        {% endif %}
+        {% if mathq %}
+        <h2 class="attend">Newest Users quizes in Math Category:</h2>
+        {% for quiz in mathq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if geogrq %}
+        <h2 class="attend">Newest Users quizes in Geography Category:</h2>
+        {% for quiz in geogrq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if funq %}
+        <h2 class="attend">Newest Users quizes in Fun Category:</h2>
+        {% for quiz in funq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if bioq %}
+        <h2 class="attend">Newest Users quizes in Biology Category:</h2>
+        {% for quiz in bioq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if econoq %}
+        <h2 class="attend">Newest Users quizes in Economy Category:</h2>
+        {% for quiz in econoq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if hisq %}
+        <h2 class="attend">Newest Users quizes in History Category:</h2>
+        {% for quiz in hisq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if logq %}
+        <h2 class="attend">Newest Users quizes in Logic Category:</h2>
+        {% for quiz in logq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if socq %}
+        <h2 class="attend">Newest Users quizes in Sociology Category:</h2>
+        {% for quiz in socq %}
+        <a href="" class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total passes:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+        {% if quizes is None %}
         <div class="no-quiz">
             <span>Oops!</span>
             <br>
             <text>Internal error has occuried</text>
             <br>
-            <text>There is no quizez</text>
+            <text>There is no quizes</text>
             <br>
             <span>:(</span>
             <br>
         </div>
         {% endif %}
-            </div>
-        </div>
     </div>
 </body>
 </html>
