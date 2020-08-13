@@ -71,8 +71,8 @@ body {
     position: relative;
     width: 100%;
     background-color: rgb(57, 77, 18);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius:  0.5vw;
+    border-top-right-radius: 0.5vw;
     margin: 0%;
 }
 
@@ -82,6 +82,7 @@ body {
     font-size: 3vw;
     padding: 2%;
     display: block;
+    font-family: 'Antic Slab', serif;
 }
 
 .shirt {
@@ -90,6 +91,51 @@ body {
     background-color: rgb(95, 165, 25);
     margin: 0%;
     display: block;
+    border-bottom-right-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+    font-family: 'Antic Slab', serif;
+}
+
+.author {
+    display: block;
+    font-size: 2vw;
+    color: white;
+    text-shadow: 0px 0px 8px black;
+    padding-bottom: 5%;
+}
+
+.quest-q {
+    display: block;
+    font-size: 2vw;
+    padding: 2%;
+}
+
+.category {
+    display: block;
+    font-size: 3vw;
+    padding: 1%;
+}
+
+.total {
+    display: block;
+    font-size: 1vw;
+}
+
+.but {
+    padding: 5% 10%;
+    background: rgb(59, 114, 5);
+    text-decoration: none;
+    color: ivory;
+    display: block;
+    font-size: 3vw;
+    border-bottom-right-radius: 0.5vw;
+    border-bottom-left-radius: 0.5vw;
+    transition: 1s;
+}
+
+.but:hover {
+    transition: 1s;
+    background: linear-gradient(60deg, rgb(59, 114, 5), rgb(118, 228, 8));
 }
 </style>
 </head>
@@ -108,7 +154,11 @@ body {
                 <span class="name">{{quiz.title}}</span>
             </div>
             <div class="shirt">
-                
+                <span class="quest-q">{{quiz.question_quantity}} questions in this quiz</span>
+                <span class="category">Category: {{quiz.category}}</span>
+                <span class="total">Total users passed: {{quiz.total}}</span>
+                <span class="author">Created by:{{quiz.author}}</span>
+                <a href="" class="but">Start quiz!</a>
             </div>
         </div>
         {% endif %}
