@@ -148,7 +148,7 @@ body {
         {% if filtered and quizes is None %}
         <h2 class="attend">Quizes from {{filter}} category:</h2>
         {% for quiz in filtered %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <span class="el-count">Total users passed:{{quiz.total}}</span>
@@ -159,7 +159,7 @@ body {
         {% elif quizes and filtered is None%}
         <h2 class="attend">Newest Users quizes:</h2>
         {% for quiz in quizes %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -172,7 +172,7 @@ body {
         {% if mathq %}
         <h2 class="attend">Newest Users quizes in Math Category:</h2>
         {% for quiz in mathq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -185,7 +185,7 @@ body {
         {% if geogrq %}
         <h2 class="attend">Newest Users quizes in Geography Category:</h2>
         {% for quiz in geogrq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -198,7 +198,7 @@ body {
         {% if funq %}
         <h2 class="attend">Newest Users quizes in Fun Category:</h2>
         {% for quiz in funq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -211,7 +211,7 @@ body {
         {% if bioq %}
         <h2 class="attend">Newest Users quizes in Biology Category:</h2>
         {% for quiz in bioq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -224,7 +224,7 @@ body {
         {% if econoq %}
         <h2 class="attend">Newest Users quizes in Economy Category:</h2>
         {% for quiz in econoq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -237,7 +237,7 @@ body {
         {% if hisq %}
         <h2 class="attend">Newest Users quizes in History Category:</h2>
         {% for quiz in hisq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -250,7 +250,7 @@ body {
         {% if logq %}
         <h2 class="attend">Newest Users quizes in Logic Category:</h2>
         {% for quiz in logq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>
@@ -263,7 +263,7 @@ body {
         {% if socq %}
         <h2 class="attend">Newest Users quizes in Sociology Category:</h2>
         {% for quiz in socq %}
-        <a href="" class="el">
+        <a href="quiz-info?quizid={{quiz.id}}" class="el">
             <h3 class="el-title">{{ quiz.title }}</h3>
             <div class="desc">
                 <h3 class="el-cat">Category:{{quiz.category}}</h3>

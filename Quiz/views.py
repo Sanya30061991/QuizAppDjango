@@ -3,9 +3,23 @@ from django.shortcuts import render, redirect
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Quiz
-
 from random import sample
 # Create your views here.
+
+
+def info(request):
+    context = {
+
+              }
+    if "quizid" in request.GET:
+        try:
+            quizz = Quiz.objects.get(id=request.GET['quizid'])
+        except Quiz.DoesNotExist:
+            quizz = None
+        context = {
+                    'quiz': quizz
+                }
+    return render(request, 'Quiz/info.html', context)
 
 
 def categ(request):
