@@ -3,7 +3,24 @@ from django.shortcuts import render, redirect
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Quiz
+
+from random import sample
 # Create your views here.
+
+
+def categ(request):
+    context = {
+                'errors': [],
+                'math': len(Quiz.objects.filter(category="Math")),
+                'logic': len(Quiz.objects.filter(category="Logic")),
+                'biology': len(Quiz.objects.filter(category="Biology")),
+                'sociology': len(Quiz.objects.filter(category="Sociology")),
+                'fun': len(Quiz.objects.filter(category="Fun")),
+                'geography': len(Quiz.objects.filter(category="Geography")),
+                'history': len(Quiz.objects.filter(category="History")),
+                'economic': len(Quiz.objects.filter(category="Economic")),
+                }
+    return render(request, 'Quiz/thematics.html', context)
 
 
 def loggt(request):
@@ -13,7 +30,6 @@ def loggt(request):
 
 def main(request):
     context = {
-                'errors': [],
                 'quizes': Quiz.objects.all()[::-1][:8],
                 'funq': Quiz.objects.filter(category='Fun')[::-1][:4],
                 'mathq': Quiz.objects.filter(category='Math')[::-1][:4],
@@ -23,7 +39,16 @@ def main(request):
                 'hisq': Quiz.objects.filter(category='History')[::-1][:4],
                 'logq': Quiz.objects.filter(category='Logic')[::-1][:4],
                 'socq': Quiz.objects.filter(category='Sociology')[::-1][:4],
+                'filtered': None
               }
+    if 'filter' in request.GET:
+        filter = request.GET['filter']
+        context = {
+                        'filtered': Quiz.objects.filter(category=filter),
+                        'filter': filter,
+                        'quizes': None
+                    }
+        print(context['quizes'])
     return render(request, 'Quiz/main.html', context)
 
 
