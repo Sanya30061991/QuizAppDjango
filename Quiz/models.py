@@ -9,3 +9,12 @@ class Quiz(models.Model):
     question_quantity = models.IntegerField('Amount of available questions')
     category = models.TextField('Category of this quiz') # History, Math, Logic, Fun, Biology, Geography, Sociology, Economic
     total = models.IntegerField('Total amount of user passes through this quiz', default=0)
+
+
+class Question(models.Model):
+    quiz_id = models.IntegerField('ID of related quiz')
+    title = models.TextField('Title of exact question')
+    ans1 = models.CharField('1 possible answer', max_length=100)
+    ans2 = models.CharField('2 possible answer', max_length=100)
+    ans3 = models.CharField('3 possible answer', max_length=100)
+    correct_ans = models.CharField('Correct answer to this question', max_length=100)
