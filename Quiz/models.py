@@ -18,3 +18,12 @@ class Question(models.Model):
     ans2 = models.CharField('2 possible answer', max_length=100)
     ans3 = models.CharField('3 possible answer', max_length=100)
     correct_ans = models.CharField('Correct answer to this question', max_length=100)
+
+
+class Result(models.Model):
+    quiz_id = models.IntegerField('ID of passed quiz')
+    user_id = models.IntegerField("ID of user, who has passed")
+    result = models.IntegerField("Amount of right answers", default=0)
+    quiz_name = models.CharField("Name of passed quiz", max_length=100, default="test")
+    quiz_category = models.CharField("Category of passed quiz", max_length=100, default="test")
+    quiz_amount = models.IntegerField("Amount of questions of passed quiz", default=0)

@@ -59,85 +59,72 @@ body {
     position: absolute;
     width: 75%;
     margin: 10% 12.5%;
+}
+
+.el {
+    position: relative;
+    background-color: rgb(57, 77, 18);
+    border-radius: 2%;
+    margin: 2% 2%;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+.desc {
+    position: relative;
+    background-color: rgb(95, 165, 25);
     text-align: center;
 }
 
-.desc {
-    margin: 0%;
-    padding: 0%;
-}
-
-.hat {
+.el-title {
     position: relative;
-    width: 100%;
-    background-color: rgb(57, 77, 18);
-    border-top-left-radius:  0.5vw;
-    border-top-right-radius: 0.5vw;
-    margin: 0%;
-}
-
-.name {
-    color: white;
-    text-shadow: 0px 0px 10px black;
-    font-size: 3vw;
-    padding: 2%;
-    display: block;
     font-family: 'Antic Slab', serif;
+    text-align: center;
+    font-size: 2vw;
+    padding-top: 3%;
+    text-shadow: 0px 0px 10px aliceblue;
 }
 
-.shirt {
+.el-cat {
     position: relative;
-    width: 100%;
-    background-color: rgb(95, 165, 25);
-    margin: 0%;
-    display: block;
-    border-bottom-right-radius: 2vw;
-    border-bottom-left-radius: 2vw;
     font-family: 'Antic Slab', serif;
+    font-size: 1.5vw;
 }
-
-.author {
-    display: block;
-    font-size: 2vw;
-    color: white;
-    text-shadow: 0px 0px 8px black;
-    padding-bottom: 5%;
-}
-
-.quest-q {
-    display: block;
-    font-size: 2vw;
-    padding: 2%;
-}
-
-.category {
-    display: block;
-    font-size: 3vw;
-    padding: 1%;
-}
-
-.total {
-    display: block;
+.el-count {
+    position: relative;
+    font-family: 'Antic Slab', serif;
     font-size: 1vw;
 }
 
-.but {
-    padding: 5% 10%;
-    background-color: rgb(118, 228, 8);
-    text-decoration: none;
-    color: ivory;
-    display: block;
-    font-size: 3vw;
-    border-bottom-right-radius: 0.5vw;
-    border-bottom-left-radius: 0.5vw;
-    transition: background 1s;
-    text-shadow: 0px 0px 5px black;
+.author {
+    position: relative;
+    font-size: 1vw;
+    color:rgb(255, 255, 255);
 }
 
-.but:hover {
-    transition: background 1s;
-    background: linear-gradient(60deg, rgb(59, 114, 5), rgb(118, 228, 8));
+.no-quiz {
+    position: relative;
+    width: 100%;
+    height: 16vw;
+    background-color: rgb(53, 133, 42);
+    text-align: center;
+    padding: 2% 0%;
+    border-radius: 1vw;
 }
+
+.no-quiz span {
+    font-size: 4vw;
+    color: beige;
+    font-family: 'Antic Slab', serif;
+}
+
+.no-quiz text {
+    font-size: 2vw;
+    color: beige;
+    font-family: 'Antic Slab', serif;
+}
+
 
 .attend {
     font-family: 'Antic Slab', serif;
@@ -157,18 +144,27 @@ body {
         <a href="log-out" class="navig">Log Out</a>
 	</div>
     <div class="content">
-        {% if quiz %}
-        <div class="desc">
-            <div class="hat">
-                <span class="name">{{quiz.title}}</span>
+        
+        {% if results %}
+        {% for result in results %}
+        <div class="el">
+            <h3 class="el-title">{{ quiz.title }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{quiz.category}}</h3>
+                <span class="el-count">Total users passed:{{quiz.total}}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
             </div>
-            <div class="shirt">
-                <span class="quest-q">{{quiz.question_quantity}} questions in this quiz</span>
-                <span class="category">Category: {{quiz.category}}</span>
-                <span class="total">Total users passed: {{quiz.total}}</span>
-                <span class="author">Created by:{{quiz.author}}</span>
-                <a href="warning?quizid={{quizid}}" class="but">Start quiz!</a>
-            </div>
+        </div>
+        {% else %}
+        <div class="no-quiz">
+            <span>Oops!</span>
+            <br>
+            <text>You have not passed quizes</text>
+            <br>
+            <text>yet</text>
+            <br>
+            <span>:(</span>
+            <br>
         </div>
         {% endif %}
     </div>
