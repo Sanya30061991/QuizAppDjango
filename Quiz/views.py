@@ -7,6 +7,13 @@ from random import sample
 # Create your views here.
 
 
+def create(request):
+    context = {
+
+              }
+    return render(request, 'Quiz/create-quiz.html')
+
+
 def warn(request):
     if 'quizid' in request.GET:
         quiz = Quiz.objects.get(id=request.GET['quizid'])
@@ -17,9 +24,6 @@ def warn(request):
 
 
 def info(request):
-    context = {
-
-              }
     if "quizid" in request.GET:
         try:
             quizz = Quiz.objects.get(id=request.GET['quizid'])
