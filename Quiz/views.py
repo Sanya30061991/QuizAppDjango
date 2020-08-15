@@ -7,10 +7,14 @@ from random import sample
 # Create your views here.
 
 
-def create(request):
+def quest(request):
     context = {
-
+                'amount': request.GET['amount']
               }
+    return render(request, 'Quiz/create-questions.html', context)
+
+
+def create(request):
     return render(request, 'Quiz/create-quiz.html')
 
 

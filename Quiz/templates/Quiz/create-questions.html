@@ -238,22 +238,13 @@ body {
         <a href="log-out" class="navig">Log Out</a>
 	</div>
     <div class="content">
-        <form action="create-quest" method="GET">
-            <h2 class="attend">Enter title of your quiz:</h2>
-            <input class="el" type="text" placeholder="Title" name="title">
-            <h2 class="attend">Enter amount of questions:</h2>
-            <input class="el" type="number" name="amount" id="count" min="1" max="15">
-            <h2 class="attend">Choose preferenced category:</h2>
-            <select name="category" id="list" class="el">
-                <option value="Fun">Fun</option>
-                <option value="Logic">Logic</option>
-                <option value="Math">Math</option>
-                <option value="History">History</option>
-                <option value="Biology">Biology</option>
-                <option value="Sociology">Sociology</option>
-                <option value="Economic">Economic</option>
-            </select>
-            <button class="but" type="submit">Submit</button>
+        <form action="" method="POST">
+            {% for question in amount %}
+            <div class="quest">
+                <h2 class="attend">Enter {{question}} question and 3 answers to it.</h2>
+                <input name=title{{question}} type="text">
+            </div>
+            {% endfor %}
         </form>
     </div>
 </body>
