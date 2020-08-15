@@ -1,84 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>All quizes</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
-
-body {
-    position: relative;
-    width: 99%;
-    background-color:  #81b963;
-}
-.main {
-    position: absolute;
-    width: 100%;
-    height: 5vw;
-    background-color:  #488d23;
-}
-
-.logo {
-    position: relative;
-    text-decoration: none;
-    font-size: 3vw;
-    margin: 0% 6%;
-    top: 0.5vw;
-    color: greenyellow;
-    text-shadow: 0px 0px 4px yellowgreen;
-    font-family: 'Antic Slab', serif;
-    transition: color 0.5s, text-shadow 0.5s;
-    margin-right: 35%;
-}
-.logo:hover {
-    color: rgb(53, 71, 16);
-    text-shadow: 0px 0px 4px rgb(57, 77, 18);
-}
-.navig {
-    position: relative;
-    color: greenyellow;
-    text-shadow: 0px 0px 4px yellowgreen;
-    padding: 1.7% 2%;
-    top: 4%;
-    text-decoration: none;
-    font-size: 1.5vw;
-    transition: background-color 0.5s, color 0.5s, text-shadow 0.5s;
-}
-
-.navig:hover {
-    background-color: #59ff00;
-    color: rgb(49, 80, 2);
-    text-shadow: 0px 0px 4px rgb(9, 71, 17);
-}
-
-.but {
-    padding: 5% 10%;
-    background-color: rgb(118, 228, 8);
-    text-decoration: none;
-    color: ivory;
-    display: block;
-    font-size: 3vw;
-    border-bottom-right-radius: 0.5vw;
-    border-bottom-left-radius: 0.5vw;
-    transition: background 1s;
-    text-shadow: 0px 0px 5px black;
-}
-
-.but:hover {
-    transition: background 1s;
-    background: linear-gradient(60deg, rgb(59, 114, 5), rgb(118, 228, 8));
-}
-
-.attend {
-    font-family: 'Antic Slab', serif;
-    font-size: 2vw;
-    margin: 0%;
-    text-shadow: 0px 0px 12px white;
-}
 
 </style><!DOCTYPE html>
 <html>
@@ -171,7 +90,7 @@ body {
     font-family: 'Antic Slab', serif;
     font-size: 2vw;
     margin: 0%;
-    margin-top: 5%;
+    margin-top: 1%;
     text-shadow: 0px 0px 12px white;
 }
 
@@ -208,16 +127,17 @@ body {
 }
 
 
-.el[id=count] {
+.el[type=number] {
     position: relative;
     width: 5%;
     display: block;
     text-align: center;
     margin-left: 47%;
     color: ivory;
+    margin-bottom: 2%;
 }
 
-.el[id=count]::-webkit-inner-spin-button {
+.el[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
@@ -226,6 +146,46 @@ body {
     color: ivory;
     text-align: center;
     height: 2.4vw;
+}
+.underline {
+    position: relative;
+    width: 100%;
+    border: 0px transparent black;
+    border-top: 1px rgb(88, 9, 124) solid;
+}
+
+.ans {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    height: 2vw;
+    text-align: center;
+    margin-top: 2%;
+    border: 0px transparent;
+    background-color: #81b963;
+    transition: 0.4s;
+    font-size: 2vw;
+    border-bottom: 1px solid black;
+    font-family: 'Antic Slab', serif;
+    text-shadow: 0px 0px 5px black;
+    margin-bottom: 2%;
+}
+
+.ans:focus {
+    background-color: rgb(99, 175, 0);
+}
+.ans:focus::placeholder {
+    color: black;
+}
+.ans::placeholder {
+    transition: 0.4s;
+    color: ivory;
+}
+.ans:active, .ans:focus {
+  outline: none !important;
+}
+.ans::-moz-focus-inner {
+  border: 0 !important;
 }
 </style>
 </head>
@@ -241,8 +201,16 @@ body {
         <form action="" method="POST">
             {% for question in amount %}
             <div class="quest">
-                <h2 class="attend">Enter {{question}} question and 3 answers to it.</h2>
-                <input name=title{{question}} type="text">
+                <h2 class="attend">Enter {{question}} question.</h2>
+                <input name=title{{question}} type="text" class="el" placeholder="{{question}} question" required>
+                <h2 class="attend">Add 3 answers</h2>
+                <input name="1ans{{question}}" type="text" class="ans" placeholder="1 answer" required>
+                <input name="2ans{{question}}" type="text" class="ans" placeholder="2 answer" required>
+                <input name="3ans{{question}}" type="text" class="ans" placeholder="3 answer" required>
+                <h2 class="attend">Choose correct answer</h2>
+                <h2 class="attend">(1-2-3)</h2>
+                <input class="el" type="number" name="correct{{question}}" min="1" max="3" placeholder="0" required>
+                <div class="underline"></div>
             </div>
             {% endfor %}
         </form>

@@ -9,7 +9,7 @@ from random import sample
 
 def quest(request):
     context = {
-                'amount': request.GET['amount']
+                'amount': range(1,int(request.GET['amount'])+1)
               }
     return render(request, 'Quiz/create-questions.html', context)
 
