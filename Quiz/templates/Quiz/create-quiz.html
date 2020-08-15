@@ -143,26 +143,13 @@ body {
 <body>
     <div class="main">
         <a href="list" class="logo">QuizApp</a>
-        <a href="" class="navig">Create Quiz</a>
+        <a href="create-quiz" class="navig">Create Quiz</a>
         <a href="thematics" class="navig">Categories</a>
         <a href="" class="navig">Passed Quizes</a>
         <a href="log-out" class="navig">Log Out</a>
 	</div>
     <div class="content">
-        {% if quiz %}
-        <div class="desc">
-            <div class="hat">
-                <span class="name">{{quiz.title}}</span>
-            </div>
-            <div class="shirt">
-                <span class="quest-q">{{quiz.question_quantity}} questions in this quiz</span>
-                <span class="category">Category: {{quiz.category}}</span>
-                <span class="total">Total users passed: {{quiz.total}}</span>
-                <span class="author">Created by:{{quiz.author}}</span>
-                <a href="warning?quizid={{quizid}}" class="but">Start quiz!</a>
-            </div>
-        </div>
-        {% endif %}
+        
     </div>
 </body>
 </html>

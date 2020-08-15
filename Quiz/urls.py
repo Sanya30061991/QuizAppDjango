@@ -8,5 +8,6 @@ urlpatterns = [
     path('log-out', views.loggt, name="logout"),
     path('thematics', views.categ, name="categories"),
     path('quiz-info', views.info, name="information"),
-    path('warning', views.warn, name="warning")
+    path('warning', views.warn, name="warning"),
+    path('create-quiz', views.warn, name="creating")
 ]
