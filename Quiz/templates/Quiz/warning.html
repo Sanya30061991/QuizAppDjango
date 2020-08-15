@@ -96,14 +96,6 @@ body {
     font-family: 'Antic Slab', serif;
 }
 
-.author {
-    display: block;
-    font-size: 2vw;
-    color: white;
-    text-shadow: 0px 0px 8px black;
-    padding-bottom: 5%;
-}
-
 .quest-q {
     display: block;
     font-size: 2vw;
@@ -128,8 +120,6 @@ body {
     color: ivory;
     display: block;
     font-size: 3vw;
-    border-bottom-right-radius: 0.5vw;
-    border-bottom-left-radius: 0.5vw;
     transition: background 1s;
     text-shadow: 0px 0px 5px black;
 }
@@ -137,6 +127,23 @@ body {
 .but:hover {
     transition: background 1s;
     background: linear-gradient(60deg, rgb(59, 114, 5), rgb(118, 228, 8));
+}
+
+.small {
+    padding: 2.5% 5%;
+    background-color: rgb(89, 173, 5);
+    text-decoration: none;
+    color: ivory;
+    display: block;
+    font-size: 1.5vw;
+    border-bottom-right-radius: 0.5vw;
+    border-bottom-left-radius: 0.5vw;
+    transition: 0.4s;
+}
+
+.small:hover {
+    color: black;
+    background-color: rgb(128, 255, 0);
 }
 </style>
 </head>
@@ -149,20 +156,19 @@ body {
         <a href="log-out" class="navig">Log Out</a>
 	</div>
     <div class="content">
-        {% if quiz %}
         <div class="desc">
             <div class="hat">
-                <span class="name">{{quiz.title}}</span>
+                <span class="name">Warning!</span>
             </div>
             <div class="shirt">
-                <span class="quest-q">{{quiz.question_quantity}} questions in this quiz</span>
-                <span class="category">Category: {{quiz.category}}</span>
-                <span class="total">Total users passed: {{quiz.total}}</span>
-                <span class="author">Created by:{{quiz.author}}</span>
-                <a href="warning?quizid={{quizid}}" class="but">Start quiz!</a>
+                <span class="quest-q">While passing the test, don't refresh the page</span>
+                <span class="category">It may cause unsaved progress</span>
+                <span class="total">Answer the questions till you will see the result</span>
+                <a href="warning?quizid={{quiz.id}}" class="but">Start quiz!</a>
+
+                <a href="list" class="small">Back to quiz list</a>
             </div>
         </div>
-        {% endif %}
     </div>
 </body>
 </html>

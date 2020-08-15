@@ -8,10 +8,12 @@ from random import sample
 
 
 def warn(request):
-    context = {
-
-              }
-    return render(request, 'Quiz/warning', context)
+    if 'quizid' in request.GET:
+        quiz = Quiz.objects.get(id=request.GET['quizid'])
+        context = {
+                    'quiz': quiz
+                  }
+    return render(request, 'Quiz/warning.html', context)
 
 
 def info(request):
@@ -24,7 +26,8 @@ def info(request):
         except Quiz.DoesNotExist:
             quizz = None
         context = {
-                    'quiz': quizz
+                    'quiz': quizz,
+                    'quizid': request.GET['quizid']
                 }
     return render(request, 'Quiz/info.html', context)
 
