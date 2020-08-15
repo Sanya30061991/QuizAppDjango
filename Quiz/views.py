@@ -7,6 +7,13 @@ from random import sample
 # Create your views here.
 
 
+def warn(request):
+    context = {
+
+              }
+    return render(request, 'Quiz/warning', context)
+
+
 def info(request):
     context = {
 
