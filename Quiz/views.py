@@ -2,15 +2,54 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
-from .models import Quiz
+from .models import Quiz, Question
 from random import sample
+# from .forms import QuestionForm
 # Create your views here.
 
 
 def quest(request):
     context = {
-                'amount': range(1,int(request.GET['amount'])+1)
+                # 'form': QuestionForm(),
+                'amount': range(1,int(request.GET['amount'])+1),
+                'qtitle': request.GET['title'],
+                'qcat': request.GET['category'],
+                'qamount': request.GET['amount']
               }
+    if request.method == "POST":
+        quiz_title = request.POST['qtitle']
+        quiz_amount = request.POST['qamount']
+        quiz_category = request.POST['qcat']
+        quiz = Quiz(
+            title=quiz_title,
+            author=request.user.username,
+            question_quantity=quiz_amount,
+            category=quiz_category
+            )
+        quiz.save()
+        for question in context['amount']:
+            quest = str(question)
+            tit = 'title' + quest
+            title = request.POST[tit]
+            an1 = '1ans'+quest
+            ans1 = request.POST[an1]
+            an2 = '2ans'+quest
+            ans2 = request.POST[an2]
+            an3 = '3ans'+quest
+            ans3 = request.POST[an3]
+            correct_answer_query = 'correct'+quest
+            correct_answer_number = request.POST[correct_answer_query]
+            correct_answer_cell = str(correct_answer_number)+'ans'+quest
+            correct_answ_itself = request.POST[correct_answer_cell]
+            quiz_question = Question(
+                                        title=title,
+                                        quiz_id=quiz.id,
+                                        ans1=ans1,
+                                        ans2=ans2,
+                                        ans3=ans3,
+                                        correct_ans=correct_answ_itself
+                                    )
+            quiz_question.save()
     return render(request, 'Quiz/create-questions.html', context)
 
 
