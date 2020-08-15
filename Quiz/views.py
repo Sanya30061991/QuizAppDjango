@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponsePermanentRedirect
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Quiz, Question
@@ -50,6 +50,7 @@ def quest(request):
                                         correct_ans=correct_answ_itself
                                     )
             quiz_question.save()
+            return HttpResponsePermanentRedirect(f'quiz-info?quizid={quiz.id}')
     return render(request, 'Quiz/create-questions.html', context)
 
 
