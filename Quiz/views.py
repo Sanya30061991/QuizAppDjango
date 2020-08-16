@@ -2,21 +2,16 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, HttpResponsePermanentRedirect
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
-from .models import Quiz, Question, Result
+from .models import Quiz, Question, UserResult
 from random import sample
 # from .forms import QuestionForm
 # Create your views here.
 
 
 def passed(request):
-    results = Result.objects.filter(user_id=request.user.id)
-    quizes = []
-    for result in results:
-        quiz = Quiz.objects.get(id=result.quiz_id)
-        quizes.append(quiz)
+    results = UserResult.objects.filter(user_id=request.user.id) 
     context = {
-                'results': results,
-                'quizes': quizes
+                'results': results
               }
     return render(request, 'Quiz/passed.html', context)
 

@@ -20,7 +20,7 @@ class Question(models.Model):
     correct_ans = models.CharField('Correct answer to this question', max_length=100)
 
 
-class Result(models.Model):
+class UserResult(models.Model):
     quiz_id = models.IntegerField('ID of passed quiz')
     user_id = models.IntegerField("ID of user, who has passed")
     result = models.IntegerField("Amount of right answers", default=0)

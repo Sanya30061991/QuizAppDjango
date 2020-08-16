@@ -148,13 +148,14 @@ body {
         {% if results %}
         {% for result in results %}
         <div class="el">
-            <h3 class="el-title">{{ quiz.title }}</h3>
+            <h3 class="el-title">{{ result.quiz_name }}</h3>
             <div class="desc">
-                <h3 class="el-cat">Category:{{quiz.category}}</h3>
-                <span class="el-count">Total users passed:{{quiz.total}}</span>
+                <h3 class="el-cat">Category:{{ result.quiz_category}}</h3>
+                <span class="el-count">Result: {{ result.result }}/{{ result.quiz_amount }}</span>
                 <h4 class="author">Created By:{{quiz.author}}</h4>
             </div>
         </div>
+        {% endfor %}
         {% else %}
         <div class="no-quiz">
             <span>Oops!</span>
