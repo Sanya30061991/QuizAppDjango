@@ -109,26 +109,26 @@ def loggt(request):
 
 
 def main(request):
-    context = {
-                'quizes': Quiz.objects.all()[::-1][:8],
-                'funq': Quiz.objects.filter(category='Fun')[::-1][:4],
-                'mathq': Quiz.objects.filter(category='Math')[::-1][:4],
-                'geogrq': Quiz.objects.filter(category='Geography')[::-1][:4],
-                'bioq': Quiz.objects.filter(category='Biology')[::-1][:4],
-                'econoq': Quiz.objects.filter(category='Economic')[::-1][:4],
-                'hisq': Quiz.objects.filter(category='History')[::-1][:4],
-                'logq': Quiz.objects.filter(category='Logic')[::-1][:4],
-                'socq': Quiz.objects.filter(category='Sociology')[::-1][:4],
-                'filtered': None
-              }
     if 'filter' in request.GET:
         filter = request.GET['filter']
         context = {
                         'filtered': Quiz.objects.filter(category=filter),
                         'filter': filter,
                         'quizes': None
-                    }
-        print(context['quizes'])
+                  }
+    else:
+        context = {
+                    'quizes': Quiz.objects.all()[::-1][:8],
+                    'funq': Quiz.objects.filter(category='Fun')[::-1][:4],
+                    'mathq': Quiz.objects.filter(category='Math')[::-1][:4],
+                    'geogrq': Quiz.objects.filter(category='Geography')[::-1][:4],
+                    'bioq': Quiz.objects.filter(category='Biology')[::-1][:4],
+                    'econoq': Quiz.objects.filter(category='Economic')[::-1][:4],
+                    'hisq': Quiz.objects.filter(category='History')[::-1][:4],
+                    'logq': Quiz.objects.filter(category='Logic')[::-1][:4],
+                    'socq': Quiz.objects.filter(category='Sociology')[::-1][:4],
+                    'filtered': None
+                }
     return render(request, 'Quiz/main.html', context)
 
 

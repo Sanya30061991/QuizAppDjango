@@ -274,7 +274,7 @@ body {
         </a>
         {% endfor %}
         {% endif %}
-        {% if quizes is None and filtered is None%}
+        {% if not quizes and filtered is None%}
         <div class="no-quiz">
             <span>Oops!</span>
             <br>
