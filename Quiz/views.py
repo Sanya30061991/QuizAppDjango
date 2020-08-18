@@ -8,6 +8,10 @@ from random import sample
 # Create your views here.
 
 
+def process(request):
+    return render(request, 'Quiz/passing.html')
+
+
 def passed(request):
     results = UserResult.objects.filter(user_id=request.user.id) 
     context = {
