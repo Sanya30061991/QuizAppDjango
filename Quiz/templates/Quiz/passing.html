@@ -148,20 +148,23 @@ body {
 	</div>
     <div class="content">
         {% if questions %}
+        <form action="" method="get">
+            {% csrf_token %}
         {% for question in questions %}
         <h2 class="attend">{{question.title}}</h2>
-        <select name="answer" id="" class="el">
-            <option value="{{question.ans1}}">{{question.ans1}}</option>
-            <option value="{{question.ans2}}">{{question.ans2}}</option>
-            <option value="{{question.ans3}}">{{question.ans3}}</option>
-        </select>
-        <div class="underline"></div>
-        {% endfor %}
-        {% endif %}
-        <form action="" method="post">
-            {% csrf_token %}
+
+            <select name="answer{{question.id}}" id="" class="el" required>
+                <option value="{{question.ans1}}">{{question.ans1}}</option>
+                <option value="{{question.ans2}}">{{question.ans2}}</option>
+                <option value="{{question.ans3}}">{{question.ans3}}</option>
+            </select>
+            <input type="hidden" name="check" value="active">
+            <input type="hidden" name="quizid" value={{quizid}}>
+            <div class="underline"></div>
+            {% endfor %}
             <button type="submit" class="but">End Test</button>
         </form>
+            {% endif %}
     </div>
 </body>
 </html>

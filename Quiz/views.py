@@ -11,8 +11,25 @@ from random import sample
 def process(request):
     quiz_id = request.GET['quizid']
     context = {
-                'questions': Question.objects.filter(quiz_id=quiz_id)
-                }
+                'questions': Question.objects.filter(quiz_id=quiz_id),
+                'quizid': quiz_id
+              }
+    if 'check' in request.GET and request.GET['check']=='active':
+        correct_counter = 0
+        for question in context['questions']:
+            answer_number = 'answer' + str(question.id)
+            if answer_number in request.GET and request.GET[answer_number] == question.correct_ans:
+                correct_conter+=1
+        quiz = Quiz.objects.get(id=quiz_id)
+        result = UserResult(
+                                quiz_id=quiz.id,
+                                user_id=request.user.id,
+                                result=correct_counter,
+                                quiz_name=quiz.title,
+                                quiz_category=quiz.category,
+                                quiz_amount=quiz.question_quantity
+                           )
+        result.save()
     return render(request, 'Quiz/passing.html', context)
 
 
