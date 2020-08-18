@@ -9,6 +9,11 @@ from random import sample
 
 
 def process(request):
+    if 'quizid' in request.GET:
+        quiz_id = request.GET['quizid']
+        context = {
+                    'questions': Question.objects.filter(quiz_id=quiz_id)
+                  }
     return render(request, 'Quiz/passing.html')
 
 
@@ -39,6 +44,7 @@ def quest(request):
             category=quiz_category
             )
         quiz.save()
+        print(request.GET['amount'])
         for question in context['amount']:
             quest = str(question)
             tit = 'title' + quest
@@ -62,7 +68,7 @@ def quest(request):
                                         correct_ans=correct_answ_itself
                                     )
             quiz_question.save()
-            return HttpResponsePermanentRedirect(f'quiz-info?quizid={quiz.id}')
+        return HttpResponsePermanentRedirect(f'quiz-info?quizid={quiz.id}')
     return render(request, 'Quiz/create-questions.html', context)
 
 

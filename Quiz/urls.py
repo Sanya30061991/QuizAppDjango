@@ -12,5 +12,5 @@ urlpatterns = [
     path('create-quiz', views.create, name="creation"),
     path('create-quest', views.quest, name="quest"),
     path('passed', views.passed, name="passed"),
-    path('quiz-pass', views.process, name="process")
+    path('pass-quiz', views.process, name="process")
 ]
