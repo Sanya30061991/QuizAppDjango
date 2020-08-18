@@ -62,88 +62,79 @@ body {
     text-align: center;
 }
 
-.desc {
-    margin: 0%;
-    padding: 0%;
-}
 
-.hat {
+.attend {
+    font-family: 'Antic Slab', serif;
+    font-size: 3vw;
+    margin: 0%;
+    text-shadow: 0px 0px 12px white;
+}
+.underline {
     position: relative;
     width: 100%;
-    background-color: rgb(57, 77, 18);
-    border-top-left-radius:  0.5vw;
-    border-top-right-radius: 0.5vw;
-    margin: 0%;
+    border: 0px transparent black;
+    border-top: 1px rgb(88, 9, 124) solid;
 }
 
-.name {
-    color: white;
-    text-shadow: 0px 0px 10px black;
-    font-size: 3vw;
-    padding: 2%;
-    display: block;
-    font-family: 'Antic Slab', serif;
-}
-
-.shirt {
+.el {
     position: relative;
-    width: 100%;
-    background-color: rgb(95, 165, 25);
-    margin: 0%;
-    display: block;
-    border-bottom-right-radius: 2vw;
-    border-bottom-left-radius: 2vw;
+    width: 20%;
+    height: 3vw;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 0px transparent;
+    background-color: #81b963;
+    transition: 0.4s;
+    font-size: 2.5vw;
+    border-bottom: 1px solid black;
     font-family: 'Antic Slab', serif;
+    text-shadow: 0px 0px 5px black;
 }
 
-.quest-q {
-    display: block;
-    font-size: 2vw;
-    padding: 2%;
+.el:focus {
+    background-color: rgb(99, 175, 0);
 }
-
-.category {
-    display: block;
-    font-size: 3vw;
-    padding: 1%;
+.el:focus::placeholder {
+    color: black;
 }
-
-.total {
-    display: block;
-    font-size: 1vw;
+.el::placeholder {
+    transition: 0.4s;
+    color: ivory;
+}
+.el:active, .el:focus {
+  outline: none !important;
+}
+.el::-moz-focus-inner {
+  border: 0 !important;
+}
+.el[id=list]{
+    width: 20%;
+    color: ivory;
+    text-align: center;
+    height: 2.4vw;
 }
 
 .but {
-    padding: 5% 10%;
+    width: 25%;
+    padding: 1% 3%;
+    margin-left: 38%;
+    margin-top: 5%;
     background-color: rgb(118, 228, 8);
     text-decoration: none;
     color: ivory;
     display: block;
     font-size: 3vw;
+    border-radius: 0.5vw;
     transition: background 1s;
+    font-family: 'Antic Slab', serif;
     text-shadow: 0px 0px 5px black;
+    border: 0px;
 }
 
 .but:hover {
     transition: background 1s;
     background: linear-gradient(60deg, rgb(59, 114, 5), rgb(118, 228, 8));
-}
-
-.small {
-    padding: 2.5% 5%;
-    background-color: rgb(89, 173, 5);
-    text-decoration: none;
-    color: ivory;
-    display: block;
-    font-size: 1.5vw;
-    border-bottom-right-radius: 0.5vw;
-    border-bottom-left-radius: 0.5vw;
-    transition: 0.4s;
-}
-
-.small:hover {
-    color: black;
-    background-color: rgb(128, 255, 0);
 }
 </style>
 </head>
@@ -159,9 +150,18 @@ body {
         {% if questions %}
         {% for question in questions %}
         <h2 class="attend">{{question.title}}</h2>
+        <select name="answer" id="" class="el">
+            <option value="{{question.ans1}}">{{question.ans1}}</option>
+            <option value="{{question.ans2}}">{{question.ans2}}</option>
+            <option value="{{question.ans3}}">{{question.ans3}}</option>
+        </select>
+        <div class="underline"></div>
         {% endfor %}
         {% endif %}
-        <h2 class="attend"></h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" class="but">End Test</button>
+        </form>
     </div>
 </body>
 </html>

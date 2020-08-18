@@ -9,12 +9,11 @@ from random import sample
 
 
 def process(request):
-    if 'quizid' in request.GET:
-        quiz_id = request.GET['quizid']
-        context = {
-                    'questions': Question.objects.filter(quiz_id=quiz_id)
-                  }
-    return render(request, 'Quiz/passing.html')
+    quiz_id = request.GET['quizid']
+    context = {
+                'questions': Question.objects.filter(quiz_id=quiz_id)
+                }
+    return render(request, 'Quiz/passing.html', context)
 
 
 def passed(request):
