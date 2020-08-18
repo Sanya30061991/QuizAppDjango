@@ -8,6 +8,17 @@ from random import sample
 # Create your views here.
 
 
+def result(request):
+    result_id = request.GET['result']
+    result = UserResult.objects.get(id=result_id)
+    quiz = Quiz.objects.get(id=result.quiz_id)
+    context = {
+                    'result': result,
+                    'quiz': quiz
+              }
+    return render(request, 'Quiz/result.html', context)
+
+
 def process(request):
     quiz_id = request.GET['quizid']
     context = {
@@ -19,7 +30,7 @@ def process(request):
         for question in context['questions']:
             answer_number = 'answer' + str(question.id)
             if answer_number in request.GET and request.GET[answer_number] == question.correct_ans:
-                correct_conter+=1
+                correct_counter+=1
         quiz = Quiz.objects.get(id=quiz_id)
         result = UserResult(
                                 quiz_id=quiz.id,
@@ -30,6 +41,7 @@ def process(request):
                                 quiz_amount=quiz.question_quantity
                            )
         result.save()
+        return HttpResponsePermanentRedirect(f'user-result?result={result.id}')
     return render(request, 'Quiz/passing.html', context)
 
 

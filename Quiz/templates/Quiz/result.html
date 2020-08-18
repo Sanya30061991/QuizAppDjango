@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>All quizes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+
+body {
+    position: relative;
+    width: 99%;
+    background-color:  #81b963;
+}
+.main {
+    position: absolute;
+    width: 100%;
+    height: 5vw;
+    background-color:  #488d23;
+}
+
+.logo {
+    position: relative;
+    text-decoration: none;
+    font-size: 3vw;
+    margin: 0% 6%;
+    top: 0.5vw;
+    color: greenyellow;
+    text-shadow: 0px 0px 4px yellowgreen;
+    font-family: 'Antic Slab', serif;
+    transition: color 0.5s, text-shadow 0.5s;
+    margin-right: 35%;
+}
+.logo:hover {
+    color: rgb(53, 71, 16);
+    text-shadow: 0px 0px 4px rgb(57, 77, 18);
+}
+.navig {
+    position: relative;
+    color: greenyellow;
+    text-shadow: 0px 0px 4px yellowgreen;
+    padding: 1.7% 2%;
+    top: 4%;
+    text-decoration: none;
+    font-size: 1.5vw;
+    transition: background-color 0.5s, color 0.5s, text-shadow 0.5s;
+}
+
+.navig:hover {
+    background-color: #59ff00;
+    color: rgb(49, 80, 2);
+    text-shadow: 0px 0px 4px rgb(9, 71, 17);
+}
+
+.content {
+    position: absolute;
+    width: 75%;
+    margin: 10% 12.5%;
+}
+
+.el {
+    position: relative;
+    background-color: rgb(57, 77, 18);
+    border-radius: 2%;
+    margin: 2% 2%;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+.desc {
+    position: relative;
+    background-color: rgb(95, 165, 25);
+    text-align: center;
+}
+
+.el-title {
+    position: relative;
+    font-family: 'Antic Slab', serif;
+    text-align: center;
+    font-size: 2vw;
+    padding-top: 3%;
+    text-shadow: 0px 0px 10px aliceblue;
+}
+
+.el-cat {
+    position: relative;
+    font-family: 'Antic Slab', serif;
+    font-size: 1.5vw;
+}
+.el-count {
+    position: relative;
+    font-family: 'Antic Slab', serif;
+    font-size: 1vw;
+}
+
+.author {
+    position: relative;
+    font-size: 1vw;
+    color:rgb(255, 255, 255);
+}
+
+.no-quiz {
+    position: relative;
+    width: 100%;
+    height: 16vw;
+    background-color: rgb(53, 133, 42);
+    text-align: center;
+    padding: 2% 0%;
+    border-radius: 1vw;
+}
+
+.no-quiz span {
+    font-size: 4vw;
+    color: beige;
+    font-family: 'Antic Slab', serif;
+}
+
+.no-quiz text {
+    font-size: 2vw;
+    color: beige;
+    font-family: 'Antic Slab', serif;
+}
+
+
+.attend {
+    font-family: 'Antic Slab', serif;
+    font-size: 2vw;
+    margin: 0%;
+    text-shadow: 0px 0px 12px white;
+}
+
+</style>
+</head>
+<body>
+    <div class="main">
+        <a href="list" class="logo">QuizApp</a>
+        <a href="create-quiz" class="navig">Create Quiz</a>
+        <a href="thematics" class="navig">Categories</a>
+        <a href="passed" class="navig">Passed Quizes</a>
+        <a href="log-out" class="navig">Log Out</a>
+	</div>
+    <div class="content">
+        {% if result %}
+        <div class="el">
+            <h3 class="el-title">{{ result.quiz_name }}</h3>
+            <div class="desc">
+                <h3 class="el-cat">Category:{{ result.quiz_category}}</h3>
+                <span class="el-count">Result: {{ result.result }}/{{ result.quiz_amount }}</span>
+                <h4 class="author">Created By:{{quiz.author}}</h4>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
